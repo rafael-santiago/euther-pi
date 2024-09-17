@@ -4,10 +4,10 @@
 E aí?! Se você chegou aqui e não sabe o que é `Eutherpe`, te sugiro dar uma conferida
 [aqui](https://github.com/rafael-santiago/eutherpe) primeiro e depois voltar... :wink:
 
-Agora se você já está por dentro, que tal embarcar um éter musical num `Raspberry Pi` ?
-Dessa forma, você terá dentro de uma caixinha austera, `low-profile`, e elegante um `player`
+Agora se você já está por dentro. Que tal embarcar um éter musical num `Raspberry Pi`?
+Dessa forma, você terá dentro de uma caixinha austera, `low-profile` e elegante um `player`
 musical que realmente vai te afastar um pouco mais daquela dinâmica chata de ouvir música
-em frente de um `desktop` ou celular e ser bombardeada(o) com quilos e quilos de sugestões e
+em frente a um `desktop` ou celular e ser bombardeada(o) com quilos e quilos de sugestões e
 propagandas idiotas. Esse monte de ruído esvazia o ritual de ouvir suas músicas favoritas.
 Aqui menos é mais!
 
@@ -19,9 +19,10 @@ por sua própria conta sem precisar pagar ninguém para fazer isso. Você não p
 especialista em computação para fazer isso. Eu bolei esse projeto pensando em amantes de
 música que usam computador mas que não são técnicos e que mesmo assim querem ter `Eutherpe`
 embarcada numa placa para tê-la o máximo disponível na rede local de suas casas e longe de
-`clouds` de terceiros. Você sabe, nuvens sinistras carregadas de propaganda chata. :cloud: :umbrella: :zzz:
+`clouds` de terceiros. Você sabe, nuvens sinistras carregadas de propaganda chata que só chove
+no molhado. :cloud: :umbrella: :zzz:
 
-Usar uma coisa que você mesmo montou é muito mais legal! E aí? Topa?! :shipit:
+Sem contar que usar uma coisa que você mesmo montou é muito mais legal! E aí? Topa?! :shipit:
 
 Mãos a obra, você pode começar por [aqui](doc/MANUAL-PT.md).
 
