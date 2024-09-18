@@ -30,8 +30,8 @@ Para embarcar `Eutherpe` você vai precisar de:
   interessante saber, originalmente eu embarquei `Eutherpe` num `4B`.
 - Uma fonte de alimentação para a sua plaquinha, sim, para o seu amado `Raspberry`, acredite,
   você passará ter fortes sentimentos por essa coisa simples e direta ao assunto. :wink:
-- Disipadores para colocar em cima dos componentes que mais emanam calor no seu `Raspberry`, é
-  um `ARM` esquenta bem pouco, e o que `Eutherpe` faz consome pouca `CPU`, mas mesmo assim é
+- Dissipadores para colocar em cima dos componentes que mais emanam calor no seu `Raspberry`. É
+  um `ARM`, esquenta bem pouco, além do que `Eutherpe` faz consumir pouca `CPU`, mas mesmo assim é
   uma boa prática procurar evitar esquentar a sua placa para que ela tenha uma boa vida útil.
 - Se possível eu sugiro você investir num case também, pois já é um investimento comprar a placa,
   então compre um case para protegê-la.
@@ -41,14 +41,14 @@ Para embarcar `Eutherpe` você vai precisar de:
 Se você escolheu o `Raspberry 5B` eu acredito que ele dê conta de suportar mais coisas embarcadas
 nele que não `Eutherpe`, contudo, tem uns poréns, segue o `how-to` que você saberá. O `3B+` tem
 fama de ser lentinho, eu nunca embarquei `Eutherpe` nele, se você fizer, me avisa como foi e
-também a sua experiência ouvindo suas músicas nele via `Eutherpe`. Valeu! :wink:
+também a sua experiência ouvindo suas músicas nele. Valeu! :wink:
 
 [`Voltar`](#tópicos)
 
 ## O Raspberry Pi Imager
 
 Você precisa instalar o `Raspberry Pi Imager` no seu `desktop/laptop`. Escolha o download que
-melhor se aplicar ao seu estado de coisas :point_right: [aqui](https://www.raspberrypi.com/software/).
+melhor se aplicar ao seu estado de coisas  [`:point_right:aqui`](https://www.raspberrypi.com/software/).
 A instalação é bem direta ao assunto, acredito que você fará isso em minutos! Você é "ráque"!
 
 [`Voltar`](#tópicos)
@@ -58,7 +58,7 @@ A instalação é bem direta ao assunto, acredito que você fará isso em minuto
 Finalmente iremos começar! A ideia é te segurar o mínimo aqui para você já ir escutar música e
 desligar tudo por aqui. Parar para escutar, desacelerar, pescou? :wink: E o melhor: totalmente
 `off-line` MuHHAuAHuHAuHAuAHUAHUAhUAHUAHUAH!!!!!!! Acredite, em tempos esses (`2024`) é super
-legal ser ilhado e diferente. Crusoé seria o cara mais esperto e de vanguardo do mundo todo e
+legal ser ilhado e diferente. Crusoé seria o cara mais esperto e vanguardista do mundo todo e
 (des)afim...
 
 [`Voltar`](#tópicos)
