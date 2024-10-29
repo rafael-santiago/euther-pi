@@ -13,7 +13,7 @@ tocar música via `Eutherpe` e ficarem bem longe do `Desktop` e da desculpa de u
 
 - [Do que você vai precisar](#do-que-você-vai-precisar)
 - [O Raspberry Pi Imager](#o-raspberry-pi-imager)
-- [Todos a bordo](#todos-à-bordo)
+- [Todos a bordo](#todos-a-bordo)
     - [O que faremos](#o-que-faremos)
     - [Instalando o Raspbian basicão e sem-frescura](#instalando-o-raspibian-basicão-e-sem-frescura)
     - [These boots are made for walking](#these-boots-are-made-for-walking)
@@ -21,6 +21,7 @@ tocar música via `Eutherpe` e ficarem bem longe do `Desktop` e da desculpa de u
 - [FAQ](#faq)
     - [É possível usar o meu Raspberry com Eutherpe embarcada em conjunto com outros softwares?](#é-possível-usar-o-meu-raspberry-com-eutherpe-embarcada-em-conjunto-com-outros-softwares)
     - [Como eu atualizo a versão da minha Eutherpe na minha placa?](#como-eu-atualizo-a-versão-da-minha-eutherpe-na-minha-placa)
+    - [Perdi o acesso Wi-Fi à Eutherpe](#perdi-o-acesso-wi-fi-à-eutherpe)
 
 ## Do que você vai precisar
 
@@ -390,7 +391,7 @@ as suas máquinas.
 Perceba ainda: o ramo de `software` tem o péssimo hábito de chamar seus clientes de "usuários"...
 Por isso, muito cuidado com quem nesse ramo você se mete.
 
-Por fim, após me provocar com esses pensamentos, em alguns meses eu sai disso:
+Por fim, após me provocar com esses pensamentos, em alguns meses eu saí disso:
 
 <td border><img src="figures/2001-epilogue.gif" width=320 height=200></td>
 
@@ -468,7 +469,7 @@ $ sudo su
 # rm -rf eutherpe
 ```
 
->Baixar os fontes da versão nova
+>Baixar os fontes da versão nova (assumindo v42)
 
 ```
 # git clone https://github.com/rafael-santiago/eutherpe -b v42
@@ -484,5 +485,41 @@ Pronto, agora digite `~.` e você se desconectará do seu `Raspberry Pi` e ele j
 versão que você baixou. Aproveite a nova versão com suas melhorias e/ou novos recursos! :wink:
 
 Viu só? Você é "ráque"! :satisfied:
+
+[`Voltar`](#tópicos)
+
+### Perdi o acesso Wi-Fi à Eutherpe
+
+Aqui é que você vai começar ver vantagem em configurar uma interface de resgate. No caso
+a solução aqui parte do princípio que durante o `bootstrapping` você optou por isso. Caso não,
+eu sugiro você refazer a instalação de `Eutherpe` agora escolhendo configurar uma interface de
+resgate, em suma é você escolher "sim" e tudo será feito por você...
+
+No caso uma interface de resgate é basicamente configurar a placa de rede do seu `Raspberry Pi`
+com um ip fixo `42.42.42.42` (Sim, `O Guia do Mochileiro das Galáxias` foi minha inspiração para
+esse endereço `IP`).
+
+Você precisa de um cabo `ethernet` e de um `desktop` ou um `laptop` que disponha de uma placa de
+rede `ethernet`. No caso em lojas onde se vende materiais elétricos/eletrônicos você tende
+encontrar esses cabos já crimpados. No caso você precisa de um cabo do tipo `CAT6` ou mesmo
+`CAT5/5e`. Dê uma olhada na **Figura 1**.
+
+Logo depois, você precisa configurar a placa de rede de seu `desktop`/`laptop` para que esteja
+na mesma rede `ethernet` do seu `Raspberry Pi`.
+
+No caso você precisa colocar as seguintes informações nas configurações de rede da
+sua placa de rede:
+
+- Endereço coloque `42.42.42.84`
+- Máscara de rede ponha `255.255.255.0`
+
+A forma como isso é configurado vai depender do sistema operacional. Na **Figura 2** segue
+como isso é feito num `Windows`.
+
+Uma vez que você pôs o IP `42.42.42.84` no seu computador, precisa apenas criar uma rede
+ponto a ponto entre o seu computador e o `Raspberry Pi`. Para fazer isso você vai usar
+o cabo `ethernet` ligando as duas placas `ethernet`, do seu computador e do `Raspberry`.
+Uma ponta do cabo vai no computador e a outra no `Raspberry`. Dê uma olhada na **Figura 3**.
+
 
 [`Voltar`](#tópicos)
