@@ -305,9 +305,23 @@ digite a sua porta de escolha e confirme-a teclando enter.
 
 O `bootstrap` nesse ponto vai detectar que você está embarcando `Eutherpe` dentro de um
 `Raspberry Pi` e vai te perguntar se você quer configurar uma interface `ethernet` de resgate.
-O que ele fará é colocar um endereço fixo na placa de rede de seu `Raspberry Pi` (`42.42.42.42`) e
-se por algum motivo você perder acesso via `Wi-Fi` ao seu `Raspberry Pi`, você ainda poderá via
-conexão cabeada (`ponto-a-ponto`) acessá-lo via o ip `42.42.42.42`. Eu acho bem conveniente fazer.
+O que ele fará é colocar um endereço fixo na placa de rede de seu `Raspberry Pi` (`42.42.42.1`)
+e um reserva `42.42.42.2`. Se por algum motivo você perder acesso via `Wi-Fi` ao seu `Raspberry Pi`,
+você ainda poderá via conexão cabeada (`ponto-a-ponto`) acessá-lo via o ip `42.42.42.1` ou
+`42.42.42.2` Eu acho bem conveniente fazer.
+
+Por que configurar dois IPs cada um em uma placa `Ethernet`? Bom a ideia por trás do conceito da
+interface de resgate é nunca te deixar na mão. Por experiência própria, o meu `Raspberry Pi` veio
+de fábrica com a interface `Ethernet` com mal contato. Daí eu acabei precisando comprar uma
+interface `Ethernet Gigabit USB` para espetar na minha placa. A necessidade é a mãe da invenção.
+A ideia inicial era oferecer apenas um IP de resgate, mas acabei tornando a ideia mais resiliente.
+Eu as configuro de um jeito que quando você espeta uma outra interface `Ethernet` e liga ela, o
+sistema operacional vai automaticamente chavear a rota para essa interface ao invés da placa de
+rede on-board. Porém, no geral você vai conseguir pingar os dois IPs independente de ter o cabo
+espetado na placa de rede on-board do seu `Raspberry` ou uma externa igual a minha `Gigabit`.
+
+Sim, `O Guia do Mochileiro das Galáxias` foi minha inspiração para esse endereço `IP`
+
 O `bootstrap` te perguntará algo como:
 
 >Do you want to set up a rescue ethernet interface? [y/n]
@@ -495,14 +509,14 @@ a solução aqui parte do princípio que durante o `bootstrapping` você optou p
 eu sugiro você refazer a instalação de `Eutherpe` agora escolhendo configurar uma interface de
 resgate, em suma é você escolher "sim" e tudo será feito por você...
 
-No caso uma interface de resgate é basicamente configurar a placa de rede do seu `Raspberry Pi`
-com um ip fixo `42.42.42.42` (Sim, `O Guia do Mochileiro das Galáxias` foi minha inspiração para
-esse endereço `IP`).
-
 Você precisa de um cabo `ethernet` e de um `desktop` ou um `laptop` que disponha de uma placa de
 rede `ethernet`. No caso em lojas onde se vende materiais elétricos/eletrônicos você tende
 encontrar esses cabos já crimpados. No caso você precisa de um cabo do tipo `CAT6` ou mesmo
-`CAT5/5e`. Dê uma olhada na **Figura 1**.
+`CAT5/5e`. Dê uma olhada na **Figura 14**.
+
+![cabo-cat6](figures/eus-pi-img-014.jpeg)
+
+**Figura 14**: Cabo ethernet para você criar a rede ponto-a-ponto.
 
 Logo depois, você precisa configurar a placa de rede de seu `desktop`/`laptop` para que esteja
 na mesma rede `ethernet` do seu `Raspberry Pi`.
@@ -510,16 +524,31 @@ na mesma rede `ethernet` do seu `Raspberry Pi`.
 No caso você precisa colocar as seguintes informações nas configurações de rede da
 sua placa de rede:
 
-- Endereço coloque `42.42.42.84`
+- Endereço coloque `42.42.42.84` (pode ser algo entre `42.42.42.3/254`).
 - Máscara de rede ponha `255.255.255.0`
 
-A forma como isso é configurado vai depender do sistema operacional. Na **Figura 2** segue
-como isso é feito num `Windows`.
+A forma como isso é configurado vai depender do sistema operacional. Na **Figura 15** segue
+como isso pode ser feito num `Windows`.
+
+![windows-net-config](figures/eus-pi-img-015.png)
+
+**Figura 15**: Configurando a rede ponto-a-ponto no seu computador (Windows).
 
 Uma vez que você pôs o IP `42.42.42.84` no seu computador, precisa apenas criar uma rede
 ponto a ponto entre o seu computador e o `Raspberry Pi`. Para fazer isso você vai usar
 o cabo `ethernet` ligando as duas placas `ethernet`, do seu computador e do `Raspberry`.
 Uma ponta do cabo vai no computador e a outra no `Raspberry`. Dê uma olhada na **Figura 3**.
 
+Por padrão `Eutherpe` ao iniciar tentar pegar um IP via `Wi-Fi`, se depois de dois minutos ela
+não conseguir, ela vai passar a funcionar no `IP` da interface de resgate, se você conectou
+via a placa de rede `on-board` do seu `Raspberry Pi` o endereço de acesso será `42.42.42.1`.
+Se você está usando uma placa de rede externa, o endereço será `42.42.42.2`. Então supondo
+que o seu acesso é `http` via porta `8080`, acesse no seu web browser:
+`http://42.42.42.42:8080/eutherpe` ou `http://42.42.42.2:8080/eutherpe`.
+
+Uma vez que você acessar `Eutherpe` via seu navegador, apenas vá em `SETTINGS` e reconfigure
+sua `Wi-Fi`, salve as alterações e depois clique em `REBOOT`. Desconecte o cabo de rede e
+espere `Eutherpe` reiniciar. Se o acesso à `Wi-Fi` voltar você já poderá acessá-la normalmente
+como de costume (via o nome .local que você configurou ou IP que você está acostumada(o)).
 
 [`Voltar`](#tópicos)
