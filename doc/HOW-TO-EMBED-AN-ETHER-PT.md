@@ -15,13 +15,14 @@ tocar música via `Eutherpe` e ficarem bem longe do `Desktop` e da desculpa de u
 - [O Raspberry Pi Imager](#o-raspberry-pi-imager)
 - [Todos a bordo](#todos-a-bordo)
     - [O que faremos](#o-que-faremos)
-    - [Instalando o Raspbian basicão e sem-frescura](#instalando-o-raspibian-basicão-e-sem-frescura)
+    - [Instalando o Raspbian basicão e sem-frescura](#instalando-o-raspbian-basicão-e-sem-frescura)
     - [These boots are made for walking](#these-boots-are-made-for-walking)
 - [Parabéns, você embarcou um éter](#parabéns-você-embarcou-um-éter)
 - [FAQ](#faq)
     - [É possível usar o meu Raspberry com Eutherpe embarcada em conjunto com outros softwares?](#é-possível-usar-o-meu-raspberry-com-eutherpe-embarcada-em-conjunto-com-outros-softwares)
     - [Como eu atualizo a versão da minha Eutherpe na minha placa?](#como-eu-atualizo-a-versão-da-minha-eutherpe-na-minha-placa)
     - [Perdi o acesso Wi-Fi à Eutherpe](#perdi-o-acesso-wi-fi-à-eutherpe)
+    - [Configurei uma senha de acesso mas me esqueci dela](#configurei-uma-senha-de-acesso-mas-me-esqueci-dela)
 
 ## Do que você vai precisar
 
@@ -320,7 +321,7 @@ sistema operacional vai automaticamente chavear a rota para essa interface ao in
 rede on-board. Porém, no geral você vai conseguir pingar os dois IPs independente de ter o cabo
 espetado na placa de rede on-board do seu `Raspberry` ou uma externa igual a minha `Gigabit`.
 
-Sim, `O Guia do Mochileiro das Galáxias` foi minha inspiração para esse endereço `IP`
+Sim, `O Guia do Mochileiro das Galáxias` foi minha inspiração para esse endereço `IP`.
 
 O `bootstrap` te perguntará algo como:
 
@@ -504,10 +505,10 @@ Viu só? Você é "ráque"! :satisfied:
 
 ### Perdi o acesso Wi-Fi à Eutherpe
 
-Aqui é que você vai começar ver vantagem em configurar uma interface de resgate. No caso
+Aqui é que você vai começar ver vantagem em configurar uma `interface de resgate`. No caso
 a solução aqui parte do princípio que durante o `bootstrapping` você optou por isso. Caso não,
 eu sugiro você refazer a instalação de `Eutherpe` agora escolhendo configurar uma interface de
-resgate, em suma é você escolher "sim" e tudo será feito por você...
+resgate, em suma é só você escolher "sim" e tudo será feito automagicamente...
 
 Você precisa de um cabo `ethernet` e de um `desktop` ou um `laptop` que disponha de uma placa de
 rede `ethernet`. No caso em lojas onde se vende materiais elétricos/eletrônicos você tende
@@ -518,8 +519,8 @@ encontrar esses cabos já crimpados. No caso você precisa de um cabo do tipo `C
 
 **Figura 14**: Cabo ethernet para você criar a rede ponto-a-ponto.
 
-Logo depois, você precisa configurar a placa de rede de seu `desktop`/`laptop` para que esteja
-na mesma rede `ethernet` do seu `Raspberry Pi`.
+Para início de conversa, você precisa configurar a placa de rede de seu `desktop`/`laptop`
+para que esteja na mesma rede `ethernet` do seu `Raspberry Pi`.
 
 No caso você precisa colocar as seguintes informações nas configurações de rede da
 sua placa de rede:
@@ -528,16 +529,22 @@ sua placa de rede:
 - Máscara de rede ponha `255.255.255.0`
 
 A forma como isso é configurado vai depender do sistema operacional. Na **Figura 15** segue
-como isso pode ser feito num `Windows`.
+como isso pode ser feito no `Windows`.
 
 ![windows-net-config](figures/eus-pi-img-015.png)
 
 **Figura 15**: Configurando a rede ponto-a-ponto no seu computador (Windows).
 
-Uma vez que você pôs o IP `42.42.42.84` no seu computador, precisa apenas criar uma rede
-ponto a ponto entre o seu computador e o `Raspberry Pi`. Para fazer isso você vai usar
-o cabo `ethernet` ligando as duas placas `ethernet`, do seu computador e do `Raspberry`.
-Uma ponta do cabo vai no computador e a outra no `Raspberry`. Dê uma olhada na **Figura 3**.
+Uma vez que você pôs o IP `42.42.42.84` no seu computador, você precisa apenas criar uma rede
+ponto-a-ponto entre o seu computador e o `Raspberry Pi`. Para fazer isso você vai usar
+o cabo `ethernet` ligando as duas placas `ethernet` com o cabo de rede.
+Uma ponta do cabo vai no computador e a outra no `Raspberry`. Ao conectar as pontas,
+você vai notar que as luzes na interface de rede do seu `Raspberry Pi` irão acender.
+Dê uma olhada na **Figura 16**.
+
+![conectando-as-pontas-do-cabo-catN](figures/eus-pi-img-016.jpeg)
+
+**Figura 16**: Conectando as pontas do cabo de rede.
 
 Por padrão `Eutherpe` ao iniciar tentar pegar um IP via `Wi-Fi`, se depois de dois minutos ela
 não conseguir, ela vai passar a funcionar no `IP` da interface de resgate, se você conectou
@@ -549,6 +556,85 @@ que o seu acesso é `http` via porta `8080`, acesse no seu web browser:
 Uma vez que você acessar `Eutherpe` via seu navegador, apenas vá em `SETTINGS` e reconfigure
 sua `Wi-Fi`, salve as alterações e depois clique em `REBOOT`. Desconecte o cabo de rede e
 espere `Eutherpe` reiniciar. Se o acesso à `Wi-Fi` voltar você já poderá acessá-la normalmente
-como de costume (via o nome .local que você configurou ou IP que você está acostumada(o)).
+como de costume (via o nome `.local` que você configurou ou IP que você está acostumada(o)).
+
+[`Voltar`](#tópicos)
+
+## Configurei uma senha de acesso mas me esqueci dela
+
+Para resetá-la, existem três formas:
+
+- Você pode refazer o seu cartão `microSD`. Se o seu `Raspberry Pi` estiver dedicado à `Eutherpe`,
+você não correrá o risco de perder nada (levando em conta que você fez `backup` das suas `playlists`,
+caso as tenha).
+
+- Se tiver configurado uma interface de resgate, poderá se valer dela para acessar o seu `Raspberry`
+via `ssh`. Se for esse o caso, segue lendo.
+
+- Você ainda pode utilizar o nome `.local` que configurou para identificar `Eutherpe` na rede de
+sua casa. O processo é igual, segue lendo.
+
+### Quero resetar a minha senha via interface de resgate ou mDNS
+
+A parte de estabelecimento da rede ponto-a-ponto via `interface de resgate` você pode
+seguir em ["Perdi o acesso Wi-Fi à Eutherpe"](#perdi-o-acesso-wi-fi-à-eutherpe), uma vez os
+cabos conectados e a rede funcionando, você volta aqui.
+
+Depois que você configurou a rede, basta iniciar um:
+
+- `Prompt de comando` se você estiver no `Windows`.
+- `Terminal` se você estiver no `Linux`.
+- `Terminal App` se você estiver no `MacOS`.
+
+Nele você vai abrir uma conexão `SSH` com o seu `Raspberry Pi` via a `interface de resgate`. Da
+seguinte forma:
+
+```
+_ ssh pi@42.42.42.1
+```
+
+Se você quiser utilizar o `.local` (`mDNS`) você vai digitar (assumindo que você deixou o nome
+`default` que é `eutherpe.local`):
+
+```
+_ ssh pi@eutherpe.local
+```
+
+**Observação para as marinheiras(os) de primeira viagem de linha de comando**: é preciso pressionar
+`ENTER` para executar o comando...
+
+Depois disso vai ser pedida uma senha, se você estiver se conectando ao `IP` pela primeira vez,
+antes da senha você terá que confirmar digitando `yes`.
+
+Digitada a senha, você entrará dentro do terminal de seu `Raspberry Pi`, terá algo como:
+
+```
+(...)$ _
+```
+
+Digite `sudo su` e pressione `ENTER`. Você agora verá algo como:
+
+```
+(...)# _
+```
+
+A tralha no final do `prompt` indica que você agora é um usuário `root`. Podendo fazer o que
+bem entender no sistema.
+
+Usando das suas prerrogativas `root`, você digitará os seguintes encantamentos (ao fim de cada
+encantamento, você pressionará `ENTER`):
+
+```
+# cd /etc/eutherpe
+# sed -i 's/"Authenticated":true/"Authenticated":false/g' player.cache
+# sed -i 's/"HashKey":".*"/"HashKey":""/g' player.cache
+# systemctl restart eutherpe
+# exit
+# exit
+```
+
+Depois disso você já terá desconectado do terminal de `Eutherpe` e poderá tentar acessar o
+`miniplayer` via seu navegador, se tudo ocorreu conforme a senha não será mais requisitada.
+Caso você a reabilite, a senha será agora a `default`: `music`.
 
 [`Voltar`](#tópicos)
