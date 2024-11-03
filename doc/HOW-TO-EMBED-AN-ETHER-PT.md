@@ -18,11 +18,12 @@ tocar música via `Eutherpe` e ficarem bem longe do `Desktop` e da desculpa de u
     - [Instalando o Raspbian basicão e sem-frescura](#instalando-o-raspbian-basicão-e-sem-frescura)
     - [These boots are made for walking](#these-boots-are-made-for-walking)
 - [Parabéns, você embarcou um éter](#parabéns-você-embarcou-um-éter)
-- [FAQ](#faq)
+- [FAQ e resolução de problemas](#faq-e-resolução-de-problemas)
     - [É possível usar o meu Raspberry com Eutherpe embarcada em conjunto com outros softwares?](#é-possível-usar-o-meu-raspberry-com-eutherpe-embarcada-em-conjunto-com-outros-softwares)
     - [Como eu atualizo a versão da minha Eutherpe na minha placa?](#como-eu-atualizo-a-versão-da-minha-eutherpe-na-minha-placa)
     - [Perdi o acesso Wi-Fi à Eutherpe](#perdi-o-acesso-wi-fi-à-eutherpe)
     - [Configurei uma senha de acesso mas me esqueci dela](#configurei-uma-senha-de-acesso-mas-me-esqueci-dela)
+    - [Eu não uso somente uma Wi-Fi, viajo bastante e estou sempre transitando entre uma rede e outra, existe uma forma de fazer Eutherpe conviver com essas mudanças de conectividade?](#eu-não-uso-somente-uma-wi-fi-viajo-bastante-e-estou-sempre-transitando-entre-uma-rede-e-outra-existe-uma-forma-de-fazer-eutherpe-conviver-com-essas-mudanças-de-conectividade)
 
 ## Do que você vai precisar
 
@@ -429,7 +430,7 @@ encantos dela! :wink:
 
 [`Voltar`](#tópicos)
 
-## FAQ
+## FAQ e resolução de problemas
 
 ### É possível usar o meu Raspberry com Eutherpe embarcada em conjunto com outros softwares?
 
@@ -625,6 +626,7 @@ Usando das suas prerrogativas `root`, você digitará os seguintes encantamentos
 encantamento, você pressionará `ENTER`):
 
 ```
+# systemctl stop eutherpe
 # cd /etc/eutherpe
 # sed -i 's/"Authenticated":true/"Authenticated":false/g' player.cache
 # sed -i 's/"HashKey":".*"/"HashKey":""/g' player.cache
@@ -636,5 +638,58 @@ encantamento, você pressionará `ENTER`):
 Depois disso você já terá desconectado do terminal de `Eutherpe` e poderá tentar acessar o
 `miniplayer` via seu navegador, se tudo ocorreu conforme a senha não será mais requisitada.
 Caso você a reabilite, a senha será agora a `default`: `music`.
+
+[`Voltar`](#tópicos)
+
+## Eu não uso somente uma Wi-Fi, viajo bastante e estou sempre transitando entre uma rede e outra, existe uma forma de fazer Eutherpe conviver com essas mudanças de conectividade?
+
+Existe uma forma de você registrar credenciais `Wi-Fi` no seu próprio `Pen-drive USB`. Caso ao
+tentar ingressar na rede local, `Eutherpe` perceba a presença desse arquivo especial, ela vai
+tentar entrar nas redes ali indicadas.
+
+Na raíz de seu `Pen-drive USB` você precisa criar o arquivo `pub-aps` dentro das pastas `.eutherpe/wlan`.
+
+Então o arquivo `.eutherpe/wlan/pub-aps` deve conter o seguinte conteúdo:
+
+```
+<Nome da rede Wi-Fi> <Senha>
+```
+
+Supondo que a rede `Wi-Fi` seja `HotelChiqueDasPulgasDouradas` e a senha `123321*!`.
+Você teria um arquivo com o seguinte conteúdo:
+
+```
+HotelChiqueDasPulgasDouradas 123321*!
+```
+
+Agora é só espetar o `Pen-Drive` no seu `Raspberry Pi` e ligá-lo, espere um tempo e você
+conseguirá acessar `Eutherpe` como já está acostumada(o).
+
+Supondo que agora você vai passar uns dias no campo e te deram a seguinte informação para acesso
+à rede `Wi-Fi` do hotel fazenda:
+
+- Nome da rede: `HotelFazendaDaVaquinhaMóó`
+- Senha: `123Móóóó*`
+
+Basta você editar o arquivo `.eutherpe/wlan/pub-aps`, adicionando:
+
+```
+#HotelChiqueDasPulgasDouradas 123321*!
+HotelFazendaDaVaquinhaMóóó 123Móóóó*
+```
+Note que foi adicionado o login para a `Wi-Fi` do hotel fazenda da vaquinha móóó e adicionada uma
+tralha no início da entrada do login do hotel chique das pulgas douradas. Ao iniciar uma linha com
+`#` você está comentando-a e com isso `Eutherpe` nem levará ela em conta. Uma boa prática é sempre
+deixar comentados os logins em redes que não estão no momento disponíveis. Isso vai poupar tempo no
+ingresso à `Wi-Fi` que interessa!
+
+O ideal mesmo é você ter conectada a `Wi-Fi` básica (a rede que você mais acessa) via a imagem
+criada pelo `Raspberry Pi Imager` ou via a configuração web de `Eutherpe`, lá na seção `settings`.
+As demais (de provavelmente locais públicos), você pode usar o recurso de cache de
+`.eutherpe/wlan/pub-aps`. Por que? Bem, as configurações básicas via `Pi Imager` e
+`Eutherpe` armazenam as senhas de forma mais segura. A do `.eutherpe/wlan/pub-abs` você precisa
+ingressar com a senha de forma exposta lá no arquivo `pub-abs`. O nome `pub-aps` já diz tudo:
+`pubLIC-Access PointS`. O que é público não tem problema de expor a senha, já que todo mundo sabe,
+gotcha? :wink:
 
 [`Voltar`](#tópicos)
