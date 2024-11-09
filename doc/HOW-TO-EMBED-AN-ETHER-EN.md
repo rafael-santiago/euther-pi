@@ -17,10 +17,12 @@ getting rid off the `Desktop` and also the excuse of using the `(un)smartphone` 
     - [Installing the basic no-frills Raspbian](#installing-the-basic-no-frills-raspbian)
     - [These boots are made for walking](#these-boots-are-made-for-walking)
 - [Congrats you have just embedded an ether](#congrats-you-have-just-embedded-an-ether)
-- [FAQ](#faq)
+- [FAQ and troubleshooting](#faq-and-troubleshooting)
     - [Can I share my Raspberry between Eutherpe and other software?](#can-i-share-my-raspberry-between-eutherpe-and-other-software)
     - [How can I update my Eutherpe copy from inside my Raspberry?](#how-can-i-update-my-Eutherpe-copy-from-inside-my-raspberry)
-    - [I forgot the access to my Wi-Fi from Eutherpe](#i-forgot-the-access-to-my-wi-fi-from-eutherpe)
+    - [I forgot the Wi-Fi access to Eutherpe](#i-forgot-the-wi-fi-access-to-eutherpe)
+    - [I have configured a password access but I forgot it](#i-have-configured-a-password-access-but-i-forgot-it)
+    - [I don't use only one Wi-Fi profile, I travel a lot and I am always changing my Wi-Fi access configurations. Does exist a way of using Eutherpe under this scenario?](#i-dont-use-only-one-wi-fi-profile-i-travel-a-lot-and-i-am-always-changing-my-wi-fi-access-configurations-does-exist-a-way-of-using-eutherpe-under-this-scenario)
 
 ## Stuff that you will need
 
@@ -282,10 +284,24 @@ by typing "y" and after inputing the port of your choice and hitting `ENTER` to 
 
 The `bootstrap` script at this point it will detect that you are embedding `Eutherpe` inside
 a `Raspberry Pi` and it will ask you if you want to configure a rescue `ethernet` interface.
-This action will put a static address in the ethernet board of your `Raspberry Pi` (`42.42.42.42`)
-and if due to some issue you become unable to access your device over your `Wi-Fi` you will still
-be able to access it over a point-to-point (`P2P`) network via the `42.42.42.42` ip. It is a
-good convenience of having set up. The `bootstrap` will ask you something like:
+This action will put a static address in the ethernet board of your `Raspberry Pi` (`42.42.42.1`)
+and a spare one `42.42.42.2`. If due to some issue you become unable to access your device over
+your `Wi-Fi` you will still be able to access it over a point-to-point (`P2P`) network via the
+`42.42.42.1` ip or `42.42.42.2`. It is a good convenience of having set up.
+
+Why provide two rescue IPs, each one in a different NIC? Well, the idea behind this concept
+is never let you "down". From personal experience, my `Raspberry Pi` came from factory with
+cold solder in its on-board `Ethernet` interface. With it I was pushed to buy a external
+`Etnetnet Gigabit` adapter. The necessity is the mother of invention. The initial idea
+was to provide only one rescue IP, but with this cold solder issue I finished up with a more
+resilient rescue system. I configure the stuff in a way that when you plug in the cable in the
+chosen interface (on-board/external) the operating system is able to switch the route to this
+active interface. However, you will be able to ping both IPs, not mattering in which the cable
+is plugged in.
+
+Yes, `The Hitchhiker's  Guide to the Galaxy` was my inspiration to those `IP` addresses.
+
+The `bootstrap` will ask you something like:
 
 >Do you want to set up a rescue ethernet interface? [y/n]
 
@@ -373,7 +389,7 @@ you may fall in love with her and never let go of its charms! :wink:
 
 [`Back`](#topics)
 
-## FAQ
+## FAQ and troubleshooting
 
 ### Can I share my Raspberry between Eutherpe and other software?
 
@@ -442,6 +458,190 @@ Did you see? You are a h4x0r! :satisfied:
 
 [`Back`](#topics)
 
-### I forgot the access to my Wi-Fi from Eutherpe
+## I forgot the Wi-Fi access to Eutherpe
+
+Now you will figure out the advantage of configuring a `rescue interface`. I am supposing that
+during the `bootstrapping` process you chose configure it. Otherwise, I suggest you reinstall
+`Eutherpe` but now choosing configure the `rescue interface` (it is just about choosing "yes"
+and everything will be do automagically).
+
+You need a `ethernet` cable and one `laptop` or `desktop` that have a `ethernet` interface.
+The ideal is a `CAT6` type but a `CAT5/5e` also will work. Take a look at **Figure 14**.
+
+![cat6-cable](figures/eus-pi-img-014.jpeg)
+
+**Figure 14**: Ethernet cable that you will use to create de point-to-point network.
+
+Firstly, you need to configure the ethernet interface of your `desktop`/`laptop` in a way
+that it stay in the same network of your `Raspberry Pi`.
+
+Put the following information in the network configuration of ethernet interface:
+
+- Network address put `42.42.42.84` (indeed, it can be something between `42.42.42.3/254`.
+- Network mask put `255.255.255.0`.
+
+The way of how to configure it depends on the operating system. In **Figure 15** is illustrated
+how it can be done in a `Windows` box.
+
+![windows-net-config](figures/eus-pi-img-015.png)
+
+**Figure 15**: Configuring the point-to-point network access in your computer (Windows).
+
+Once attributed the `42.42.42.84` IP for work computer, you need to create the point-to-point
+network between your computer and your `Raspberry Pi`. It is just about using the `ethernet`
+cable by plugging in the two `ethernet` interfaces. One end of the cable goes in your computer
+and the another in your `Raspberry Pi`. After connecting the both ends you will notice
+that the leds from your `Raspberry Pi`'s network interface will light on. Take a look
+at the **Figure 16**.
+
+![connecting-the-two-catN-cable-ends](figures/eus-pi-img-016.jpeg)
+
+**Figure 16**: Connecting the network cable ends.
+
+By default, when booting up, `Eutherpe` tries to acquire a `Wi-Fi` IP address, if after
+two minutes it is not possible, `Eutherpe` will use the `rescue` IP. If you plugged the
+cable in the `on-board` NIC of your `Raspberry` the address it will be `42.42.42.1`.
+If you are using an external NIC, the address it will be `42.42.42.2`. Thus, supposing that
+your access is `http` via port `8080`, access from your browser:
+`http://42.42.42.1:8080/eutherpe` or `http://42.42.42.2:8080/eutherpe`.
+
+Once you have accesed `Eutherpe` via your web browser, go to `SETTINGS` and reconfigure your
+`Wi-Fi`, save the changes and finally click on `REBOOT`. Disconnect the cable and wait
+`Eutherpe` completes the reboot process. If your `Wi-Fi` access was restablished you will
+be able to access it how you are used to (using the `.local` name or the IP that your router
+gives to `Eutherpe`).
+
+[`Back`](#topics)
+
+## I have configured a password access but I forgot it
+
+In order to reset it, there are three ways:
+
+- You can reimage your `microSD` card. If you let your `Raspberry Pi` dedicated to `Eutherpe`,
+you will lose nothing (taking into consideration that you did `backup` of your `playlists`, in case
+you have some).
+
+- If you have configured a rescue interface, you will take advantage of it to access your `Raspberry`
+via `ssh`. If it is the case, keep on reading.
+
+- You can still use the `.local` name that you configured to identify `Eutherpe` in your home
+network. The process is the same, keep on reading.
+
+### I want to reset my password via rescue interface or mDNS
+
+The part of establishing the point-to-point network via `rescue interface` you can follow
+in ["I forgot the Wi-Fi access to Eutherpe"](i-forgot-the-wi-fi-access-to-eutherpe), once the
+cable connected and the network access working, you jump back here.
+
+Once the networking "working", it is only about running a:
+
+- `Command prompt` if you are in `Windows`.
+- `Terminal` if your are in `Linux`.
+- `Terminal App` if you are in `MacOS`.
+
+From it you will open a `SSH` connection to your `Raspberry Pi` via `recuse interface`. In the
+following way:
+
+```
+_ ssh pi@42.42.42.1
+```
+
+If you want to use the `.local` (`mDNS`) you will type the following (assuming that you let
+the `default` name `eutherpe.local`):
+
+```
+_ ssh pi@eutherpe.local
+```
+
+**Remark to first-time command line sailors**: it is necessary to press `ENTER` to execute the
+command...
+
+After this the password will be asked. If you are connecting to the address for the first time,
+before asking the password, you will need to confirm typing `yes`.
+
+Once the password validated, you will ingress in your `Raspberry Pi`'s terminal. It will
+have something like:
+
+```
+(...)$ _
+```
+
+Type `sudo su` and press `ENTER`. Now you will see something like:
+
+```
+(...)# _
+```
+
+The dash at the end of the prompt indicates that from now on you are `root` user. You can
+do everything you want to in the system.
+
+Using your root user prerogatives type the following incantations (at the end of each one
+you will press `ENTER`):
+
+```
+# systemctl stop eutherpe
+# cd /etc/eutherpe
+# sed -i 's/"Authenticated":true/"Authenticated":false/g' player.cache
+# sed -i 's/"HashKey":".*"/"HashKey":""/g' player.cache
+# systemctl restart eutherpe
+# exit
+# exit
+```
+
+Once all incantations done you will be disconnected from `Eutherpe`'s terminal and be able to
+access the `miniplayer` from your web browser. If everything happen as expected the password
+will not be asked anymore. In case of re-enabling it, the password will be the `default` one:
+`music`.
+
+[`Back`](#topics)
+
+## I don't use only one Wi-Fi profile, I travel a lot and I am always changing my Wi-Fi access configurations. Does exist a way of using Eutherpe under this scenario?
+
+There is a way of you register the `Wi-Fi` credentials in your own `USB pen-drive`. `Eutherpe` gives
+preference to the credentials stored in this file, overriding the default `Wi-Fi` configuration.
+
+In the root of your `Pen-drive USB` you need to create the file `pub-aps` under the following path `.eutherpe/wlan`.
+
+Then the file `.eutherpe/wlan/pub-aps` must contain the following data:
+
+```
+<Wi-Fi network name> <Password>
+```
+
+Supposing that the `Wi-Fi` would be `GoldenFleaHotel` and password `123321*!`.
+You would have the following content in the file:
+
+```
+GoldenFleaHotel 123321*!
+```
+
+Now it is only about plugging the `Pen-Drive` in `Raspberry Pi` and power it on, wait a time and
+you will be able to access `Eutherpe` how you are used to.
+
+Supposing that now you will spend some days in the countryside and that you have the following
+access information to the `Wi-Fi` provided by your farm stay:
+
+- Network name: `FarmStayMoosLittleCow`
+- Senha: `123moooo*`
+
+It is only you edut the file `.eutherpe/wlan/pub-aps`, adding:
+
+```
+#GoldenFleaHotel 123321*!
+FarmStayMoosLittleCow 123moooo*
+```
+
+Notice that it was added the new `Wi-Fi` login and also added a dash ate the beginning of the
+prior one. When you start a line with `#` it becomes a commentary and `Eutherpe` skips it.
+It is a best practice let always unavailable network commented out. It will saves time
+to ingress in the `Wi-Fi` you really want to.
+
+The ideal is have the main `Wi-Fi` configurated by the `Raspberry Pi Imager` or via `Eutherpe`
+web configuration, at `SETTINGS` section. The other (probably from public spots), you can
+use the cache feature provided by `.eutherpe/wlan/pub-aps`. Why? The `Wi-Fi` credentials
+saved by `Pi Imager` and `Eutherpe` are stored cryptographed. All cache done in `.eutherpe/
+wlan/pub-aps` are stored in plaintext. The name `pub-aps` give the tips:
+`PUBlic-Access-PointS`. What is public, there is no problem to expose, everyone already knows
+about, gotcha? :wink:
 
 [`Back`](#topics)

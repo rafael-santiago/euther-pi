@@ -310,19 +310,20 @@ O `bootstrap` nesse ponto vai detectar que você está embarcando `Eutherpe` den
 O que ele fará é colocar um endereço fixo na placa de rede de seu `Raspberry Pi` (`42.42.42.1`)
 e um reserva `42.42.42.2`. Se por algum motivo você perder acesso via `Wi-Fi` ao seu `Raspberry Pi`,
 você ainda poderá via conexão cabeada (`ponto-a-ponto`) acessá-lo via o ip `42.42.42.1` ou
-`42.42.42.2` Eu acho bem conveniente fazer.
+`42.42.42.2`. Eu acho bem conveniente fazer.
 
-Por que configurar dois IPs cada um em uma placa `Ethernet`? Bom a ideia por trás do conceito da
+Por que configurar dois IPs e cada um em uma placa `Ethernet`? Bom a ideia por trás do conceito da
 interface de resgate é nunca te deixar na mão. Por experiência própria, o meu `Raspberry Pi` veio
-de fábrica com a interface `Ethernet` com mal contato. Daí eu acabei precisando comprar uma
+de fábrica com a interface `Ethernet` com mau contato. Daí eu acabei precisando comprar uma
 interface `Ethernet Gigabit USB` para espetar na minha placa. A necessidade é a mãe da invenção.
-A ideia inicial era oferecer apenas um IP de resgate, mas acabei tornando a ideia mais resiliente.
-Eu as configuro de um jeito que quando você espeta uma outra interface `Ethernet` e liga ela, o
-sistema operacional vai automaticamente chavear a rota para essa interface ao invés da placa de
-rede on-board. Porém, no geral você vai conseguir pingar os dois IPs independente de ter o cabo
-espetado na placa de rede on-board do seu `Raspberry` ou uma externa igual a minha `Gigabit`.
+A ideia inicial era oferecer apenas um IP de resgate, mas acabei tornando o sistema de resgate
+mais resiliente por conta desse problema do mau contato. Eu as configuro de um jeito que quando
+você espeta uma outra interface `Ethernet` e então pluga o cabo de rede, o sistema operacional vai
+automaticamente chavear a rota para essa interface ao invés de usar a placa de rede on-board para
+isso. Porém, no geral você vai conseguir pingar os dois IPs independente de ter o cabo espetado na
+placa de rede on-board do seu `Raspberry` ou em uma externa igual a minha `Gigabit`.
 
-Sim, `O Guia do Mochileiro das Galáxias` foi minha inspiração para esse endereço `IP`.
+Sim, `O Guia do Mochileiro das Galáxias` foi minha inspiração para esses endereços `IP`.
 
 O `bootstrap` te perguntará algo como:
 
@@ -369,9 +370,9 @@ de propaganda para mim, prefiro ganhar a vida sem usar as pessoas como meros tra
 escusos que envolvam seus gostos, hábitos e informações pessoais... :herb: :cow: :headphones: :money_with_wings: :milky_way: :moneybag: :alien: :point_left: :satisfied:
 Chega dessa porra, a *Internet* precisa voltar a ser legal de novo...
 
-Sou totalmente a favor da dignidade da pessoa humana inclusive virtualmente, não sou o que se diz
-popularmente por aí "duas conversa". Programar para mim é como escrever ensaios. Eu me expresso sobre
-preferências e crenças mesmo que de forma não *livre de contexto*, mas ainda sim, isso para mim é
+Sou totalmente a favor da dignidade da pessoa humana, inclusive virtualmente, não sou o que se diz
+popularmente por aí: "duas conversa". Programar para mim é como escrever ensaios. Eu me expresso sobre
+preferências e crenças mesmo que de forma *não livre de contexto*, mas ainda sim, isso para mim é
 uma linguagem que excede simplesmente a mera programação e tecnicidade, minhas ideias e ideais nos
 meus códigos em muitos momentos eclodem e eu prezo por isso. Amo detalhes e são nos detalhes onde
 moram meus protestos, sarcasmo (não sou perfeito), críticas e opiniões. Ao usar esse `software`
@@ -527,7 +528,7 @@ No caso você precisa colocar as seguintes informações nas configurações de 
 sua placa de rede:
 
 - Endereço coloque `42.42.42.84` (pode ser algo entre `42.42.42.3/254`).
-- Máscara de rede ponha `255.255.255.0`
+- Máscara de rede ponha `255.255.255.0`.
 
 A forma como isso é configurado vai depender do sistema operacional. Na **Figura 15** segue
 como isso pode ser feito no `Windows`.
@@ -547,12 +548,12 @@ Dê uma olhada na **Figura 16**.
 
 **Figura 16**: Conectando as pontas do cabo de rede.
 
-Por padrão `Eutherpe` ao iniciar tentar pegar um IP via `Wi-Fi`, se depois de dois minutos ela
+Por padrão `Eutherpe` ao iniciar tenta pegar um IP via `Wi-Fi`, se depois de dois minutos ela
 não conseguir, ela vai passar a funcionar no `IP` da interface de resgate, se você conectou
 via a placa de rede `on-board` do seu `Raspberry Pi` o endereço de acesso será `42.42.42.1`.
 Se você está usando uma placa de rede externa, o endereço será `42.42.42.2`. Então supondo
 que o seu acesso é `http` via porta `8080`, acesse no seu web browser:
-`http://42.42.42.42:8080/eutherpe` ou `http://42.42.42.2:8080/eutherpe`.
+`http://42.42.42.1:8080/eutherpe` ou `http://42.42.42.2:8080/eutherpe`.
 
 Uma vez que você acessar `Eutherpe` via seu navegador, apenas vá em `SETTINGS` e reconfigure
 sua `Wi-Fi`, salve as alterações e depois clique em `REBOOT`. Desconecte o cabo de rede e
@@ -578,8 +579,8 @@ sua casa. O processo é igual, segue lendo.
 ### Quero resetar a minha senha via interface de resgate ou mDNS
 
 A parte de estabelecimento da rede ponto-a-ponto via `interface de resgate` você pode
-seguir em ["Perdi o acesso Wi-Fi à Eutherpe"](#perdi-o-acesso-wi-fi-à-eutherpe), uma vez os
-cabos conectados e a rede funcionando, você volta aqui.
+seguir em ["Perdi o acesso Wi-Fi à Eutherpe"](#perdi-o-acesso-wi-fi-à-eutherpe), uma vez o
+cabo conectado e a rede funcionando, você volta aqui.
 
 Depois que você configurou a rede, basta iniciar um:
 
@@ -587,7 +588,7 @@ Depois que você configurou a rede, basta iniciar um:
 - `Terminal` se você estiver no `Linux`.
 - `Terminal App` se você estiver no `MacOS`.
 
-Nele você vai abrir uma conexão `SSH` com o seu `Raspberry Pi` via a `interface de resgate`. Da
+Nele você vai abrir uma conexão `SSH` com o seu `Raspberry Pi` via `interface de resgate`. Da
 seguinte forma:
 
 ```
@@ -636,7 +637,7 @@ encantamento, você pressionará `ENTER`):
 ```
 
 Depois disso você já terá desconectado do terminal de `Eutherpe` e poderá tentar acessar o
-`miniplayer` via seu navegador, se tudo ocorreu conforme a senha não será mais requisitada.
+`miniplayer` via seu navegador, se tudo ocorreu conforme, a senha não será mais requisitada.
 Caso você a reabilite, a senha será agora a `default`: `music`.
 
 [`Voltar`](#tópicos)
@@ -677,6 +678,7 @@ Basta você editar o arquivo `.eutherpe/wlan/pub-aps`, adicionando:
 #HotelChiqueDasPulgasDouradas 123321*!
 HotelFazendaDaVaquinhaMóóó 123Móóóó*
 ```
+
 Note que foi adicionado o login para a `Wi-Fi` do hotel fazenda da vaquinha móóó e adicionada uma
 tralha no início da entrada do login do hotel chique das pulgas douradas. Ao iniciar uma linha com
 `#` você está comentando-a e com isso `Eutherpe` nem levará ela em conta. Uma boa prática é sempre
@@ -684,12 +686,12 @@ deixar comentados os logins em redes que não estão no momento disponíveis. Is
 ingresso à `Wi-Fi` que interessa!
 
 O ideal mesmo é você ter conectada a `Wi-Fi` básica (a rede que você mais acessa) via a imagem
-criada pelo `Raspberry Pi Imager` ou via a configuração web de `Eutherpe`, lá na seção `settings`.
+criada pelo `Raspberry Pi Imager` ou via a configuração web de `Eutherpe`, lá na seção `SETTINGS`.
 As demais (de provavelmente locais públicos), você pode usar o recurso de cache de
 `.eutherpe/wlan/pub-aps`. Por que? Bem, as configurações básicas via `Pi Imager` e
 `Eutherpe` armazenam as senhas de forma mais segura. A do `.eutherpe/wlan/pub-abs` você precisa
 ingressar com a senha de forma exposta lá no arquivo `pub-abs`. O nome `pub-aps` já diz tudo:
-`pubLIC-Access PointS`. O que é público não tem problema de expor a senha, já que todo mundo sabe,
+`PUBlic-Access PointS`. O que é público não tem problema de expor, já que todo mundo sabe,
 gotcha? :wink:
 
 [`Voltar`](#tópicos)
