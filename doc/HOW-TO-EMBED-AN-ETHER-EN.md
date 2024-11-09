@@ -215,7 +215,7 @@ you are in `MacOS`.
 
 Once it done you need to type the following:
 
-```
+```console
 _ ssh <username>@<hostname>
 ```
 
@@ -224,7 +224,7 @@ where you can get this information, well as `username`, too.
 
 In my case, following the example, they would be:
 
-```
+```console
 ssh pi@xablau.local
 ```
 If a message asking you to confirm yes/no be shown, type "yes" and hit `ENTER`. Following up
@@ -232,38 +232,38 @@ the password will be asked, too. Type it, too.
 
 Once logged in, you will type the following:
 
-```
+```console
 _ sudo su
 ```
 
 Once it done, you will become superuser (a.k.a `root`). If you really have superuser powers
 you will notice a dash symbol in the prompt:
 
-```
+```console
 pi@(...)# _
 ```
 
 Now we will install the `git` application and using it we will download `Eutherpe`'s source code:
 
-```
+```console
 # apt install git -y
 ```
 
 After finishing up the `git` installation download the `Eutherpe` source code as follows:
 
-```
+```console
 # git clone https://github.com/rafael-santiago/eutherpe -b v1
 ```
 
 After you need to jump to source directory:
 
-```
+```console
 # cd eutherpe
 ```
 
 Being inside the `eutherpe` directory, run the `bootstrap`:
 
-```
+```console
 # ./bootstrap.sh
 ```
 
@@ -422,31 +422,31 @@ Now follows all step by step, in form of effective commands to you get the thing
 
 >Connect to your `Raspberry Pi`
 
-```
+```console
 _ ssh <username>@<hostname or your raspberry's ip>
 ```
 
 >Get superuser powers
 
-```
+```console
 $ sudo su
 ```
 
 >Remove a possible previous copy of her source codes
 
-```
+```console
 # rm -rf eutherpe
 ```
 
 >Get the newest source codes (assuming v42)
 
-```
+```console
 # git clone https://github.com/rafael-santiago/eutherpe -b v42
 ```
 
 >Run the update
 
-```
+```console
 # cd eutherpe/src && make update
 ```
 
@@ -542,14 +542,14 @@ Once the networking "working", it is only about running a:
 From it you will open a `SSH` connection to your `Raspberry Pi` via `recuse interface`. In the
 following way:
 
-```
+```console
 _ ssh pi@42.42.42.1
 ```
 
 If you want to use the `.local` (`mDNS`) you will type the following (assuming that you let
 the `default` name `eutherpe.local`):
 
-```
+```console
 _ ssh pi@eutherpe.local
 ```
 
@@ -562,13 +562,13 @@ before asking the password, you will need to confirm typing `yes`.
 Once the password validated, you will ingress in your `Raspberry Pi`'s terminal. It will
 have something like:
 
-```
+```console
 (...)$ _
 ```
 
 Type `sudo su` and press `ENTER`. Now you will see something like:
 
-```
+```console
 (...)# _
 ```
 
@@ -578,7 +578,7 @@ do everything you want to in the system.
 Using your root user prerogatives type the following incantations (at the end of each one
 you will press `ENTER`):
 
-```
+```console
 # systemctl stop eutherpe
 # cd /etc/eutherpe
 # sed -i 's/"Authenticated":true/"Authenticated":false/g' player.cache
