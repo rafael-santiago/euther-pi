@@ -22,7 +22,7 @@ getting rid off the `Desktop` and also the excuse of using the `(un)smartphone` 
     - [How can I update my Eutherpe copy from inside my Raspberry?](#how-can-i-update-my-Eutherpe-copy-from-inside-my-raspberry)
     - [I forgot the Wi-Fi access to Eutherpe](#i-forgot-the-wi-fi-access-to-eutherpe)
     - [I have configured a password access but I forgot it](#i-have-configured-a-password-access-but-i-forgot-it)
-    - [I don't use only one Wi-Fi profile, I travel a lot and I am always changing my Wi-Fi access configurations. Does exist a way of using Eutherpe under this scenario?](#i-dont-use-only-one-wi-fi-profile-i-travel-a-lot-and-i-am-always-changing-my-wi-fi-access-configurations-does-exist-a-way-of-using-eutherpe-under-this-scenario)
+    - [I don't use only one Wi-Fi profile, I go on a trip a lot and I am always changing my Wi-Fi access configurations. Does exist a way of using Eutherpe under this scenario?](#i-dont-use-only-one-wi-fi-profile-i-go-on-a-trip-a-lot-and-i-am-always-changing-my-wi-fi-access-configurations-does-exist-a-way-of-using-eutherpe-under-this-scenario)
 
 ## Stuff that you will need
 
@@ -595,7 +595,7 @@ will not be asked anymore. In case of re-enabling it, the password will be the `
 
 [`Back`](#topics)
 
-## I don't use only one Wi-Fi profile, I travel a lot and I am always changing my Wi-Fi access configurations. Does exist a way of using Eutherpe under this scenario?
+## I don't use only one Wi-Fi profile, I go on a trip a lot and I am always changing my Wi-Fi access configurations. Does exist a way of using Eutherpe under this scenario?
 
 There is a way of you register the `Wi-Fi` credentials in your own `USB pen-drive`. `Eutherpe` gives
 preference to the credentials stored in this file, overriding the default `Wi-Fi` configuration.
