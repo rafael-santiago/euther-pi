@@ -52,7 +52,7 @@ a lot of boring ads. :cloud: :umbrella: :zzz:
 
 Using a thing made by your own it is much cooler! What about? Are you up for it? :shipit:
 
-Let's get to work, you can start from [here](doc/HOW-TO-EMBEDE-AN-ETHER-EN.md).
+Let's get to work, you can start from [here](doc/HOW-TO-EMBED-AN-ETHER-EN.md).
 
 -- Rafael
 
