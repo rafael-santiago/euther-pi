@@ -28,8 +28,9 @@ Mãos a obra, você pode começar por [aqui](doc/HOW-TO-EMBED-AN-ETHER-PT.md).
 
 -- Rafael
 
->- Oh! English, please?
->- Okay...
+>"- Oh! English, please?"
+>
+>"- Okay..."
 
 Hi there! If you arrived here but do not have any idea of what `Eutherpe` is, I suggest you
 take a look at [here](https://github.com/rafael-santiago/eutherpe) and getting back later... :wink:

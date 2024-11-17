@@ -343,7 +343,7 @@ sua `Wi-Fi`.
 Depois disso é só observar. Tudo vai ser posto no jeito e por fim o seu `Raspberry Pi` será
 reiniciado. Uma vez reiniciada a sua musa sem frescuras estará pronta e a sua espera!
 
-Plugue um `pen-drive USB` na sua placa acesse `http://eutherpe.local:8080/eutherpe` (caso tenha
+Plugue um `pen drive USB` na sua placa acesse `http://eutherpe.local:8080/eutherpe` (caso tenha
 alterado a `porta default` substitua `8080` por sua escolha). Caso não saiba utilizar o
 `miniplayer web` de `Eutherpe` dê uma lida no [`manual`](https://github.com/rafael-santiago/blob/main/doc/MANUAL-PT.md).
 Acredito que ele é bem intuitivo e direto ao ponto, então cutucando-o, você também aprenderá.
@@ -644,11 +644,11 @@ Caso você a reabilite, a senha será agora a `default`: `music`.
 
 ## Eu não uso somente uma Wi-Fi, viajo bastante e estou sempre transitando entre uma rede e outra, existe uma forma de fazer Eutherpe conviver com essas mudanças de conectividade?
 
-Existe uma forma de você registrar credenciais `Wi-Fi` no seu próprio `Pen-drive USB`. Caso ao
+Existe uma forma de você registrar credenciais `Wi-Fi` no seu próprio `Pen drive USB`. Caso ao
 tentar ingressar na rede local, `Eutherpe` perceba a presença desse arquivo especial, ela vai
 tentar entrar nas redes ali indicadas.
 
-Na raíz de seu `Pen-drive USB` você precisa criar o arquivo `pub-aps` dentro das pastas `.eutherpe/wlan`.
+Na raíz de seu `Pen drive USB` você precisa criar o arquivo `pub-aps` dentro das pastas `.eutherpe/wlan`.
 
 Então o arquivo `.eutherpe/wlan/pub-aps` deve conter o seguinte conteúdo:
 
@@ -663,7 +663,7 @@ Você teria um arquivo com o seguinte conteúdo:
 HotelChiqueDasPulgasDouradas 123321*!
 ```
 
-Agora é só espetar o `Pen-Drive` no seu `Raspberry Pi` e ligá-lo, espere um tempo e você
+Agora é só espetar o `Pen Drive` no seu `Raspberry Pi` e ligá-lo, espere um tempo e você
 conseguirá acessar `Eutherpe` como já está acostumada(o).
 
 Supondo que agora você vai passar uns dias no campo e te deram a seguinte informação para acesso

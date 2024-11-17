@@ -319,7 +319,7 @@ After that confirmations, it is only about watching on. Everything will be tuned
 end your `Raspberry Pi` it will be rebooted. Once reboot done your no-frills muse will be ready
 and waiting for you!
 
-Plug in a `USB pen-drive` in your board and access `http://eutherpe.local:8080/eutherpe` (if
+Plug in a `USB pen drive` in your board and access `http://eutherpe.local:8080/eutherpe` (if
 you have changed the `default port` replace `8080` to your port of choice). If you do not
 know how to use the `Eutherpe`'s `web miniplayer` you should read the [`manual`](https://github.com/rafael-santiago/blob/main/doc/MANUAL-EN.md).
 I believ that the player is pretty intuitive and straightforward, by poking it up, you will also figure out.
@@ -597,10 +597,10 @@ will not be asked anymore. In case of re-enabling it, the password will be the `
 
 ## I don't use only one Wi-Fi profile, I go on a trip a lot and I am always changing my Wi-Fi access configurations. Does exist a way of using Eutherpe under this scenario?
 
-There is a way of you register the `Wi-Fi` credentials in your own `USB pen-drive`. `Eutherpe` gives
+There is a way of you register the `Wi-Fi` credentials in your own `USB pen drive`. `Eutherpe` gives
 preference to the credentials stored in this file, overriding the default `Wi-Fi` configuration.
 
-In the root of your `Pen-drive USB` you need to create the file `pub-aps` under the following path `.eutherpe/wlan`.
+In the root of your `Pen drive USB` you need to create the file `pub-aps` under the following path `.eutherpe/wlan`.
 
 Then the file `.eutherpe/wlan/pub-aps` must contain the following data:
 
@@ -615,7 +615,7 @@ You would have the following content in the file:
 GoldenFleaHotel 123321*!
 ```
 
-Now it is only about plugging the `Pen-Drive` in `Raspberry Pi` and power it on, wait a time and
+Now it is only about plugging the `Pen Drive` in `Raspberry Pi` and power it on, wait a time and
 you will be able to access `Eutherpe` how you are used to.
 
 Supposing that now you will spend some days in the countryside and that you have the following
