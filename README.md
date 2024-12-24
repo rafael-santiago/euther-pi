@@ -1,6 +1,8 @@
 ![euther-pi-glyph](doc/figures/euther-pi-glyph.png)
 # Euther-PI
 
+[Oh! English, please...](#oh-english-please)
+
 E aí?! Se você chegou aqui e não sabe o que é `Eutherpe`, te sugiro dar uma conferida
 [aqui](https://github.com/rafael-santiago/eutherpe) primeiro e depois voltar... :wink:
 
@@ -28,9 +30,7 @@ Mãos a obra, você pode começar por [aqui](doc/HOW-TO-EMBED-AN-ETHER-PT.md).
 
 -- Rafael
 
->"- Oh! English, please?"
->
->"- Okay..."
+## Oh! English, please...
 
 Hi there! If you arrived here but do not have any idea of what `Eutherpe` is, I suggest you
 take a look at [here](https://github.com/rafael-santiago/eutherpe) and getting back later... :wink:
